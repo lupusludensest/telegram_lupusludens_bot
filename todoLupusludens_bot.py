@@ -1,7 +1,9 @@
+# firstPythonToDoBot @lupusludens_bot pip3 install pytelegrambotapi
 from random import choice
 import telebot
 
 token = '5114938412:AAH9_YJs1J8eefrqMGa4x2cLHBilXisfFbI'
+
 
 bot = telebot.TeleBot(token)
 
@@ -22,7 +24,7 @@ List of accessible commands:
 * print - print out all tasks on given date
 * todo - add a task
 * random - add a task on today
-* print out help
+* help - print out help
 """
 
 
@@ -50,7 +52,7 @@ def add(message):
     task = ' '.join([tail])
     # TODO: 1
     if len(task) < 3:
-        bot.send_message(message.chat.id, 'Tasks can not be <= 3 chars')
+        bot.send_message(message.chat.id, 'Tasks can not be < 3 chars')
     add_todo(date, task)
     bot.send_message(message.chat.id, f'Task {task} added on day {date}')
 
@@ -68,3 +70,4 @@ def print_(message):
     bot.send_message(message.chat.id, response)
 
 bot.polling(none_stop=True)
+
